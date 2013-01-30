@@ -1,4 +1,3 @@
-carrasco
-========
+#Python Course repository
 
-Guillermo Carrasco's repository for the python course
+Guillermo Carrasco repository for the python course
