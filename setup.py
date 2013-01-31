@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1'
+version = '0.2'
 
 setup(name='carrasco',
       version=version,
@@ -19,7 +19,7 @@ Just a Set of scripts/assignments for the python course in Science For Life Labo
       include_package_data=True,
       zip_safe=True,
       install_requires=[
-          # -*- Extra requirements: -*-
+          'untangle'
       ],
       entry_points="""
       # -*- Entry points: -*-
