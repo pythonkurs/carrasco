@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import argparse
 from carrasco.session3 import CourseRepo, repo_dir
 
@@ -11,6 +12,9 @@ if __name__ == '__main__':
     #Positional arguments (mandatory)
     parser.add_argument('repo', help="Absolute path to the course repository")
     args = parser.parse_args()
+
+    if not os.path.exists(args.repo):
+        sys.exit("Sorry, the path that you specifyed doesn't exist!")
 
     with repo_dir(args.repo):
         repo = CourseRepo(os.path.split(args.repo)[1])
