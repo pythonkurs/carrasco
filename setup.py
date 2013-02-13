@@ -19,7 +19,10 @@ Just a Set of scripts/assignments for the python course in Science For Life Labo
       include_package_data=True,
       zip_safe=True,
       install_requires=[
-          'untangle'
+          'untangle',
+          'pandas',
+          'requests',
+          'dateutils'
       ],
       entry_points="""
       # -*- Entry points: -*-
