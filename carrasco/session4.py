@@ -38,3 +38,17 @@ def get_commit_history(organization=None, username=None, password=None):
             data[name] = Series(commits_messages, index=commits_dates)
 
     return DataFrame(data)
+
+def _getLongestValue(d):
+    k = max(d, key = lambda x: len(d[x]))
+    return k , len(d[k])
+
+def get_most_common_day_and_hour():
+    dow = {0:'Mon', 1:'Tue', 2:'Wed', 3:'Thu', 4:'Fri', 5:'Sat', 6:'Sun'}
+    d = get_commit_history(organization="pythonkurs", username="guillermo-carrasco")
+    days = d.groupby(d.index.dayofweek)
+    hours = d.groupby(d.index.hour)
+    day, commits = _getLongestValue(days.groups)
+    hour, commits2 = _getLongestValue(hours.groups)
+    print "The most common day to commit is {d}, with {nc} commits".format(d = dow[day], nc = str(commits))
+    print "The rush hour to commit seems to be {h}, with {nc} commits".format(h = str(hour), nc = str(commits2))
