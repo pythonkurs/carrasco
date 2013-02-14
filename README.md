@@ -101,3 +101,31 @@ it should make a CourseRepo instance like in the example above (with "a").
 Like the other script, this script should also be installed when running python setup.py install.
 
 __Note: If your repo has a structure this script is not expecting, fixing it should be rather smooth using git mv for renaming/moving files and directories.__
+
+##Fourth assignment
+###GitHub API
+Github has a very extensive RESTful API (a web service). For example, to get information about members of an organization, one can do this
+
+        import requests
+        with open("secret") as secret:
+            password = secret.read().strip()
+
+        users = requests.get("https://api.github.com/orgs/pythonkurs/members", auth=("vals", password))
+
+The API is documented very clearly and with lots of examples [here](http://developer.github.com/).
+Note in particular that URI's to related resources are given with keys of the form *_url.
+
+1. Use the Github API to get the commit history of each repository in the organization 
+in to a DataFrame, where columns are repositories and rows are commits indexed by time.
+The content should be the commit message. Put a function which returns the specified DataFrame in a submodule.
+
+2. Use the DataFrame to figure out what is the most common weekday and hour of a day to commit to a course repo.
+When you have figured out a way of giving a value for the most common weekday and hour of a day,
+write a function in a session4 submodule which takes a DataFrame as argument and returns the weekday and hour of a day.
+
+3. When you have learned how to get data from the Github API, spend some time playing 
+around with data you can get and try to figure out something else about the pythonkurs organization.
+No need to write functions or so for this assignment, just explore.
+Then write a very short plain text file in the root of your repository called pythonkurs_organization.txt
+with some information about the data that you found interesting. By "very short",
+we mean no longer than 150 words. Putting more than 150 words in the text file will count as failing the assignment.
